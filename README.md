@@ -1,7 +1,7 @@
 # <span style="color:olive">Support service application</span>
 
 
-## <span style="color:Chocolate">Adjust the application</span>
+## <span style="color:Peru">Adjust the application</span>
 
 ### Install deps
 
@@ -12,7 +12,7 @@ pipenv sync --dev
 pipenv shell
 ```
 
-## <span style="color:Chocolate">Code quality tools</span>
+## <span style="color:Peru">Code quality tools</span>
 
 - ### Framework:
     - Django
