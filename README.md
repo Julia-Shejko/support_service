@@ -12,10 +12,15 @@ pipenv sync --dev
 pipenv shell
 ```
 
-## <span style="color:DarkOliveGreen">Code quality tools</span>
-
 - ### Framework:
     - Django
+- ### Libraries:
+    - pydantic
+    - requests
+
+## <span style="color:DarkOliveGreen">Code quality tools</span>
+
+
 
 - ### Linter:
     - flake8
