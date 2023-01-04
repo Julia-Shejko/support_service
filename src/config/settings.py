@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "exchange_rates",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
+
+
+# Set custom user model
+AUTH_USER_MODEL = "users.User"
 
 
 # Exchange rates service (Alpha Vantage)
