@@ -1,15 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 
-# id
-# password
-# last_login
-# activated (or is_active)
-
-# email
-# first_name
-# last_name
-
 
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
