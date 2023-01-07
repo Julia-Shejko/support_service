@@ -3,8 +3,13 @@
 
 ## <span style="color:DarkOliveGreen">Adjust the application</span>
 
-### Install deps
+### Create '.env' file based on '.env.default'
+```bash
+cp .env.default .env
+```
 
+
+### Install deps
 ```bash
 pipenv sync --dev
 
