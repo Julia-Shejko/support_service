@@ -17,9 +17,10 @@ pipenv sync --dev
 pipenv shell
 ```
 
-- ### Framework:
+- ### Frameworks:
     - Django
     - Django REST framework
+    - Simple JWT
 
 - ### Libraries:
     - pydantic
@@ -45,3 +46,5 @@ pipenv shell
     ├─ admin.py # Database tables mapper
     # └─ api.py # Endopints / post-controller
 ```
+
+<img alt="Illustration for the project" src="D:\hillel\support_service\Illustration_for_the_project.png"/>
