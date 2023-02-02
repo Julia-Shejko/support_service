@@ -1,5 +1,5 @@
-from django.http import JsonResponse
 from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from shared.serializers import ResponseMultiSerializer, ResponseSerializer
 from tickets.models import Ticket
@@ -15,7 +15,7 @@ class TicketAPISet(ViewSet):
         serializer.save()
         response = ResponseSerializer({"result": serializer.data})
 
-        return JsonResponse(response.data, status=status.HTTP_201_CREATED)
+        return Response(response.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, id_: int):
         instance: Ticket = Ticket.objects.get(id=id_)
@@ -31,7 +31,7 @@ class TicketAPISet(ViewSet):
 
         response = ResponseSerializer({"result": serializer.data})
 
-        return JsonResponse(response.data, status=status.HTTP_201_CREATED)
+        return Response(response.data, status=status.HTTP_201_CREATED)
 
     def list(self, request):
         queryset = Ticket.objects.all()
@@ -39,7 +39,7 @@ class TicketAPISet(ViewSet):
         serializer = TicketLightSerializer(queryset, many=True)
         response = ResponseMultiSerializer({"results": serializer.data})
 
-        return JsonResponse(response.data)
+        return Response(response.data)
 
     def retrieve(self, request, id_: int):
         instance = Ticket.objects.get(id=id_)
@@ -47,12 +47,12 @@ class TicketAPISet(ViewSet):
         serializer = TicketSerializer(instance)
         response = ResponseSerializer({"result": serializer.data})
 
-        return JsonResponse(response.data)
+        return Response(response.data)
 
     def destroy(self, request, id_: int):
         Ticket.objects.get(id=id_).delete()
 
-        return JsonResponse({"result": "The ticket has been deleted"}, status=status.HTTP_204_NO_CONTENT)
+        return Response({"result": "The ticket has been deleted"}, status=status.HTTP_204_NO_CONTENT)
 
 
 ticket_create = TicketAPISet.as_view({"post": "create"})

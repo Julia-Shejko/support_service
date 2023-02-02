@@ -1,5 +1,5 @@
-from django.http import JsonResponse
 from rest_framework import status
+from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from shared.serializers import ResponseSerializer
@@ -15,7 +15,7 @@ class _TokenObtainPairView(TokenObtainPairView):
             raise InvalidToken(e.args[0])
         response = ResponseSerializer({"result": serializer.validated_data})
 
-        return JsonResponse(response.data, status=status.HTTP_200_OK)
+        return Response(response.data, status=status.HTTP_200_OK)
 
 
 class _TokenRefreshView(TokenRefreshView):
@@ -28,4 +28,4 @@ class _TokenRefreshView(TokenRefreshView):
             raise InvalidToken(e.args[0])
         response = ResponseSerializer({"result": serializer.validated_data})
 
-        return JsonResponse(response.data, status=status.HTTP_200_OK)
+        return Response(response.data, status=status.HTTP_200_OK)

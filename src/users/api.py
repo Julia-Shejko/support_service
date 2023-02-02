@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
-from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from shared.serializers import ResponseMultiSerializer, ResponseSerializer
 from users.serializers import UserLightSerializer, UserRegistrationSerializer, UserSerializer, UserUpdateSerializer
@@ -20,7 +20,7 @@ class UserAPISet(ViewSet):
         serializer.save()
         response = ResponseSerializer({"result": serializer.data})
 
-        return JsonResponse(response.data, status=status.HTTP_201_CREATED)
+        return Response(response.data, status=status.HTTP_201_CREATED)
 
     def list(self, request):
         queryset = User.objects.all()
@@ -28,7 +28,7 @@ class UserAPISet(ViewSet):
         serializer = UserLightSerializer(queryset, many=True)
         response = ResponseMultiSerializer({"results": serializer.data})
 
-        return JsonResponse(response.data)
+        return Response(response.data)
 
     def retrieve(self, request, id_: int):
         instance = User.objects.get(id=id_)
@@ -36,7 +36,7 @@ class UserAPISet(ViewSet):
         serializer = UserSerializer(instance)
         response = ResponseSerializer({"result": serializer.data})
 
-        return JsonResponse(response.data)
+        return Response(response.data)
 
     def update(self, request, id_: int):
         instance = User.objects.get(id=id_)
@@ -47,7 +47,7 @@ class UserAPISet(ViewSet):
         serializer.save()
         response = ResponseSerializer({"result": serializer.data})
 
-        return JsonResponse(response.data, status=status.HTTP_201_CREATED)
+        return Response(response.data, status=status.HTTP_201_CREATED)
 
 
 user_create = UserAPISet.as_view({"post": "create"})
