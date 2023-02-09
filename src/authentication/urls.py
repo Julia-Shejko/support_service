@@ -1,5 +1,6 @@
-from authentication.api import _TokenObtainPairView, _TokenRefreshView
 from django.urls import path
+
+from authentication.api import _TokenObtainPairView, _TokenRefreshView
 
 urlpatterns = [
     path("token/", _TokenObtainPairView.as_view()),

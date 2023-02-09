@@ -15,6 +15,6 @@ class UserAdmin(admin.ModelAdmin):
         "is_active",
         "email",
     ]
-    list_display = ["email", "first_name", "last_name", "role", "is_active"]
+    list_display = ["email", "id", "role", "is_active"]
     list_filter = ["role"]
     search_fields = ["email", "last_name"]

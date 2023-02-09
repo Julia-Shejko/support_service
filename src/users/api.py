@@ -2,8 +2,10 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+
 from shared.serializers import ResponseMultiSerializer, ResponseSerializer
 from users.constants import Role
 from users.permissions import AccountOwner, RoleIsAdmin
@@ -44,7 +46,7 @@ class UserAPISet(ModelViewSet):
             user = User.objects.filter(email=self.request.user.email)
             return get_object_or_404(user, id=self.kwargs[self.lookup_field])
 
-    def create(self, request):
+    def create(self, request: Request | Request, *args, **kwargs) -> Response | Response:
         context: dict = {"request": self.request}
 
         serializer = UserRegistrationSerializer(data=request.data, context=context)
@@ -54,7 +56,8 @@ class UserAPISet(ModelViewSet):
 
         return Response(response.data, status=status.HTTP_201_CREATED)
 
-    def list(self, request):
+    def list(self, request: Request | Request, *args, **kwargs) -> Response | Response:
+
         queryset = User.objects.all()
 
         serializer = UserLightSerializer(queryset, many=True)
@@ -62,15 +65,20 @@ class UserAPISet(ModelViewSet):
 
         return Response(response.data)
 
-    def retrieve(self, request, pk):
-        instance = self._get_queryset()
+    def retrieve(self, request: Request | Request, *args, **kwargs) -> Response | Response:
+        if request.user.role == Role.ADMIN:  # type: ignore
+            users = User.objects.all()
+            instance = get_object_or_404(users, id=self.kwargs[self.lookup_field])
+        else:
+            user = User.objects.filter(email=self.request.user.email)  # type: ignore
+            instance = get_object_or_404(user, id=self.kwargs[self.lookup_field])
 
         serializer = UserSerializer(instance)
         response = ResponseSerializer({"result": serializer.data})
 
         return Response(response.data)
 
-    def update(self, request, pk: int):
+    def update(self, request: Request | Request, *args, **kwargs) -> Response | Response:
         instance = self._get_queryset()
         context: dict = {"request": self.request}
 
