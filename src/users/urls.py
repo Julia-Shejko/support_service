@@ -1,12 +1,7 @@
-from django.contrib.auth import get_user_model
-from django.urls import path
-from users.api import user_create, user_retrieve, user_update, users_list
+from rest_framework.routers import DefaultRouter
 
-User = get_user_model()
+from users.api import UserAPISet
 
-urlpatterns = [
-    path("", users_list),
-    path("", user_create),
-    path("<int:id_>/", user_update),
-    path("<int:id_>/", user_retrieve),
-]
+router = DefaultRouter()
+router.register(r"users", UserAPISet, basename="users")
+urlpatterns = router.urls
