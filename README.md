@@ -19,12 +19,15 @@ pipenv shell
 
 - ### Frameworks:
     - Django
-    - Django REST framework
-    - Simple JWT
+    - Django REST framework    
 
 - ### Libraries:
     - pydantic
     - requests
+    - djangorestframework-simplejwt
+    - psycopg2-binary
+    - django-stubs
+    - djangorestframework-stubs
 
 ## <span style="color:DarkOliveGreen">Code quality tools</span>
 
@@ -33,6 +36,8 @@ pipenv shell
 - ### Code formatters:
     - black
     - isort
+- ### Type checker:
+    - mypy
 
 
 ## <span style="color:DarkOliveGreen">Application description</span>
