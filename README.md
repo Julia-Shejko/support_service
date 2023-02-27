@@ -40,20 +40,54 @@ pipenv shell
     - mypy
 
 
+
+## Run using Docker Compose
+```bash
+docker-compose up -d
+```
+
+
+### Useful commands
+```bash
+# Build images
+docker-compose build
+
+# Stop containers
+docker-compose down
+
+# Restart containers
+docker-compose restart
+
+# Check containers status
+docker-compose ps
+
+
+## Logs
+
+# get all logs
+docker-compose logs
+
+# get specific logs
+docker-compose logs app
+
+# get limited logs
+docker-compose logs --tail 10 app
+
+# get flowed logs
+docker-compose logs -f app
+```
+
+
 ## <span style="color:DarkOliveGreen">Application description</span>
 
 ```bash
 ▾ users
     ├─ apps.py # Django apps configuration
     ├─ urls.py # pre-controller
-    ├─ api.py # Endopints / post-controller
+    ├─ api.py # Endpoints / post-controller
     ├─ models.py # Database tables mapper
-    ├─ admin.py # Database tables mapper
-    # └─ api.py # Endopints / post-controller
+    └─ admin.py # Database tables mapper    
 ```
-
-<img alt="Illustration for the project" src="D:\hillel\support_service\Illustration_for_the_project.png"/>
-
 
 # Database
 
