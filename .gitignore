@@ -15,3 +15,6 @@ __pycache__/
 
 # Staticfiles
 staticfiles/
+
+#PATH
+PATH
