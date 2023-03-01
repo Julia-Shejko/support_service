@@ -17,6 +17,13 @@ pipenv sync --dev
 pipenv shell
 ```
 
+
+### Collect static files
+```bash
+python src/manage.py collectstatic
+```
+
+
 - ### Frameworks:
     - Django
     - Django REST framework    
@@ -28,6 +35,7 @@ pipenv shell
     - psycopg2-binary
     - django-stubs
     - djangorestframework-stubs
+    - gunicorn
 
 ## <span style="color:DarkOliveGreen">Code quality tools</span>
 
@@ -79,15 +87,6 @@ docker-compose logs -f app
 
 
 ## <span style="color:DarkOliveGreen">Application description</span>
-
-```bash
-▾ users
-    ├─ apps.py # Django apps configuration
-    ├─ urls.py # pre-controller
-    ├─ api.py # Endpoints / post-controller
-    ├─ models.py # Database tables mapper
-    └─ admin.py # Database tables mapper    
-```
 
 # Database
 
