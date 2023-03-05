@@ -64,7 +64,6 @@ docker-compose logs -f app
 
 
 
-
 - ### Frameworks:
     - Django
     - Django REST framework    
