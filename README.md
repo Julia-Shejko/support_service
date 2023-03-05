@@ -24,31 +24,6 @@ python src/manage.py collectstatic
 ```
 
 
-- ### Frameworks:
-    - Django
-    - Django REST framework    
-
-- ### Libraries:
-    - pydantic
-    - requests
-    - djangorestframework-simplejwt
-    - psycopg2-binary
-    - django-stubs
-    - djangorestframework-stubs
-    - gunicorn
-
-## <span style="color:DarkOliveGreen">Code quality tools</span>
-- ## Validation with CircleCI
-
-- ### Linter:
-    - flake8
-- ### Code formatters:
-    - black
-    - isort
-- ### Type checker:
-    - mypy
-
-
 
 ## Run using Docker Compose
 ```bash
@@ -85,6 +60,35 @@ docker-compose logs --tail 10 app
 # get flowed logs
 docker-compose logs -f app
 ```
+
+
+
+
+
+
+- ### Frameworks:
+    - Django
+    - Django REST framework    
+
+- ### Libraries:
+    - pydantic
+    - requests
+    - djangorestframework-simplejwt
+    - psycopg2-binary
+    - django-stubs
+    - djangorestframework-stubs
+    - gunicorn
+
+## <span style="color:DarkOliveGreen">Code quality tools</span>
+- ## Validation with CircleCI
+
+- ### Linter:
+    - flake8
+- ### Code formatters:
+    - black
+    - isort
+- ### Type checker:
+    - mypy
 
 
 ## <span style="color:DarkOliveGreen">Application description</span>
