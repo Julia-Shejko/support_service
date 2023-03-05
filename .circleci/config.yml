@@ -2,8 +2,6 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.5.0
-references:
-  requirements_txt: "Pipfile"
 
 jobs:
   check-code-quality:
@@ -18,7 +16,7 @@ jobs:
           command: python -m pip install --upgrade pip && pip install pipenv
       - run:
           name: Install deps
-          command: pipenv sync --dev --system
+          command: pipenv sync --dev --system && pipenv run pip freeze > requirements.txt
       - run:
           name: Run linter
           command: flake8 .
