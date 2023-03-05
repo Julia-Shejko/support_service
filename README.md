@@ -38,6 +38,7 @@ python src/manage.py collectstatic
     - gunicorn
 
 ## <span style="color:DarkOliveGreen">Code quality tools</span>
+- ## Validation with CircleCI
 
 - ### Linter:
     - flake8
