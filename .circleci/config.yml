@@ -1,0 +1,34 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.5.0
+
+jobs:
+  check-code-quality:
+    docker:
+      - image: cimg/python:3.10.10
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Install pipenv
+          command: python -m pip install --upgrade pip && pip install pipenv
+      - run:
+          name: Install deps
+          command: pipenv sync --dev --system
+      - run:
+          name: Run linter
+          command: flake8 .
+      - run:
+          name: Check formatting
+          command: black --check . && isort --check .
+      - run:
+          name: Check static types
+          command: mypy .
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - check-code-quality
