@@ -24,7 +24,6 @@ python src/manage.py collectstatic
 ```
 
 
-
 ## Run using Docker Compose
 ```bash
 docker-compose up -d
