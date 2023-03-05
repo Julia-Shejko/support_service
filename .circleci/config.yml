@@ -2,6 +2,8 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.5.0
+references:
+  requirements_txt: "Pipfile"
 
 jobs:
   check-code-quality:
