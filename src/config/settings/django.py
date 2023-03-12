@@ -125,3 +125,6 @@ STATIC_URL = "static/"
 
 # Set custom user model
 AUTH_USER_MODEL = "users.User"
+
+# List of trusted data sources from which POST requests should be accepted
+CSRF_TRUSTED_ORIGINS = getenv("DJANGO_CSRF_TRUSTED_ORIGINS", default="").split(",")
