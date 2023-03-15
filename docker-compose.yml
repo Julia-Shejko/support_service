@@ -25,6 +25,8 @@ services:
     volumes:
       - "static_volume:/app/staticfiles"
       - ".:/app/"
+    #ports:
+    #  - "8000:8000"
     expose:
       - "8000"
 
