@@ -7,6 +7,7 @@ from shared.serializers import ResponseMultiSerializer, ResponseSerializer
 from tickets.models import Ticket
 from tickets.permissions import RoleIsAdmin, RoleIsManager, RoleIsUser, TicketManager, TicketOwner
 from tickets.serializers import TicketLightSerializer, TicketSerializer
+from tickets.tasks import hello_task
 from users.constants import Role
 
 
@@ -60,6 +61,13 @@ class TicketAPISet(ModelViewSet):
         return Response(response.data, status=status.HTTP_201_CREATED)
 
     def list(self, request: Request | Request, *args, **kwargs) -> Response | Response:
+        # =============================
+        # IO blocking task
+        for _ in range(5):
+            hello_task.delay(name=request.user.email.split("@")[0])  # type: ignore
+            # hello_task.apply_async(kwargs={"name": "Dima"})
+        # =============================
+
         if request.user.role == Role.ADMIN:  # type: ignore
             queryset = self.get_queryset()
         elif request.user.role == Role.MANAGER:  # type: ignore
